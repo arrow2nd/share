@@ -7,9 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   ...site,
+  metadataBase: new URL("https://" + site.title),
   openGraph: {
     ...site,
-    url: site.title,
+    url: "/",
     type: "website",
     siteName: site.title,
   },
