@@ -11,7 +11,7 @@ const fetchServers = async <T>(url: string, f: (json: T) => string[]) => {
   console.log("[LOG] parse");
   const json = await res.json() as T;
 
-  return f(json).sort();
+  return f(json);
 };
 
 type MastodonServers = {
