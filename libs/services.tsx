@@ -3,25 +3,25 @@ import { SiMastodon, SiMisskey, SiThreads, SiX } from "react-icons/si";
 
 export const services: Service[] = [
   {
-    name: "X",
+    name: "x",
     shareUrlTemplate: "https://twitter.com/intent/tweet?text={text}",
     icon: <SiX />,
     hiddenSelectServer: true,
   },
   {
-    name: "Mastodon",
+    name: "mastodon",
     shareUrlTemplate: "{server}/share?text={text}",
     icon: <SiMastodon />,
     hiddenSelectServer: false,
   },
   {
-    name: "Misskey",
+    name: "misskey",
     shareUrlTemplate: "{server}/share?text={text}",
     icon: <SiMisskey />,
     hiddenSelectServer: false,
   },
   {
-    name: "Threads",
+    name: "threads",
     shareUrlTemplate: "barcelona://create?text={text}",
     icon: <SiThreads />,
     hiddenSelectServer: true,

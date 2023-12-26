@@ -5,10 +5,18 @@ import { services } from "@/libs/services";
 import { Service } from "@/types/service";
 import { useState } from "react";
 
-export default function Form() {
-  const [service, setService] = useState<Omit<Service, "icon">>(services[0]);
-  const [server, setServer] = useState<string>("");
-  const [text, setText] = useState<string>("");
+export type FormProps = {
+  defaultService: Service;
+  defaultServer: string;
+  defaultText: string;
+};
+
+export default function Form(
+  { defaultService, defaultServer, defaultText }: FormProps,
+) {
+  const [service, setService] = useState<Omit<Service, "icon">>(defaultService);
+  const [server, setServer] = useState<string>(defaultServer);
+  const [text, setText] = useState<string>(defaultText);
 
   const shareUrl = service.shareUrlTemplate.replace("{server}", server).replace(
     "{text}",
@@ -32,6 +40,7 @@ export default function Form() {
         <input
           className="w-full text-neutral-600 rounded-md outline-none"
           placeholder="インスタンス・サーバーを選択"
+          defaultValue={defaultServer}
           onChange={(e) => setServer(e.target.value)}
         />
       </div>
@@ -39,6 +48,7 @@ export default function Form() {
         <textarea
           className="w-full min-h-32 text-neutral-600 outline-none"
           placeholder="なにをしぇあする？"
+          defaultValue={defaultText}
           onChange={(e) => setText(e.target.value)}
         />
       </div>
