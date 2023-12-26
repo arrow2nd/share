@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update:servers": "ts-node ./tools/update-servers.ts"
   },
   "dependencies": {
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
