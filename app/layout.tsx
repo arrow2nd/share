@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { site } from "@/libs/constants";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "しぇあ.com",
-  description:
-    "X / Mastodon / Misskey など、各種 SNS へのシェアをサポートする Web アプリ",
+  ...site,
+  openGraph: {
+    ...site,
+    url: site.title,
+    type: "website",
+    siteName: site.title,
+  },
 };
 
 export default function RootLayout({
