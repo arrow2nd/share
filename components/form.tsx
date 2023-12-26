@@ -4,7 +4,7 @@ import ServiceButton from "@/components/button";
 import { fetchServers } from "@/libs/servers";
 import { services } from "@/libs/services";
 import { Service } from "@/types/service";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export type FormProps = {
   defaultService: Service;
