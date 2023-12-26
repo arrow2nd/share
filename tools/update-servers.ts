@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+const { writeFileSync } = require("fs");
 
 const fetchServers = async <T>(url: string, f: (json: T) => string[]) => {
   console.log(`[LOG] fetch (${url})`);
@@ -11,7 +11,7 @@ const fetchServers = async <T>(url: string, f: (json: T) => string[]) => {
   console.log("[LOG] parse");
   const json = await res.json() as T;
 
-  return f(json);
+  return f(json).sort();
 };
 
 type MastodonServers = {
