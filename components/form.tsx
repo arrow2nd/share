@@ -1,11 +1,12 @@
 "use client";
 
-import ServiceButton from "@/components/button";
+import Button from "@/components/button";
+import ServiceButton from "@/components/service-button";
 import { fetchServers } from "@/libs/servers";
 import { services } from "@/libs/services";
 import { Service } from "@/types/service";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useReducer, useState } from "react";
 
 export type FormProps = {
   defaultService: Service;
@@ -20,11 +21,32 @@ export default function Form(
   const [server, setServer] = useState<string>(defaultServer);
   const [text, setText] = useState<string>(defaultText);
   const [servers, setServers] = useState<string[]>([]);
+  const [isCopied, toggleCopied] = useReducer((prev) => !prev, false);
 
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const router = useRouter();
 
   const disabledShare = !text || (service.instanceVariation && !server);
+
+  const handleClickCopy = async () => {
+    if (disabledShare) {
+      return;
+    }
+
+    const url = new URL("https://しぇあ.com");
+
+    url.searchParams.append("service", service.name);
+
+    if (server) {
+      url.searchParams.append("server", server);
+    }
+
+    url.searchParams.append("text", text);
+
+    await navigator.clipboard.writeText(url.href);
+
+    toggleCopied();
+    setTimeout(() => toggleCopied(), 1500);
+  };
 
   const handleClickShare = () => {
     if (disabledShare) {
@@ -80,14 +102,19 @@ export default function Form(
         defaultValue={defaultText}
         onChange={(e) => setText(e.target.value)}
       />
-      <div className="flex justify-end">
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-5 py-2 cursor-pointer disabled:bg-neutral-100 transition-colors"
+      <div className="flex justify-end space-x-2">
+        <Button
+          onClick={handleClickCopy}
+          disabled={disabledShare}
+        >
+          {isCopied ? "コピーしました！" : "リンクをコピー"}
+        </Button>
+        <Button
           onClick={handleClickShare}
           disabled={disabledShare}
         >
           しぇあ
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,20 +1,12 @@
 import { ButtonHTMLAttributes } from "react";
 
-type Props = {
-  selected?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
-export default function ServiceButton({ selected = false, ...props }: Props) {
+export default function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...props}
-      className={`px-4 py-1 rounded-full focus:outline-none transition-colors ${
-        selected
-          ? "text-white bg-blue-500"
-          : "text-neutral-600 hover:text-white bg-neutral-100 hover:bg-blue-500"
-      }`}
+      className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-5 py-2 cursor-pointer disabled:bg-neutral-100 transition-colors"
     >
-      {props?.children}
+      {props.children}
     </button>
   );
 }
