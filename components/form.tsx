@@ -4,7 +4,8 @@ import ServiceButton from "@/components/button";
 import { fetchServers } from "@/libs/servers";
 import { services } from "@/libs/services";
 import { Service } from "@/types/service";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 
 export type FormProps = {
   defaultService: Service;
@@ -20,10 +21,24 @@ export default function Form(
   const [text, setText] = useState<string>(defaultText);
   const [servers, setServers] = useState<string[]>([]);
 
-  const shareUrl = service.shareUrlTemplate.replace("{server}", server).replace(
-    "{text}",
-    encodeURIComponent(text),
-  );
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
+
+  const disabledShare = !text || (service.instanceVariation && !server);
+
+  const handleClickShare = () => {
+    if (disabledShare) {
+      return;
+    }
+
+    const shareUrl = service.shareUrlTemplate.replace("{server}", server)
+      .replace(
+        "{text}",
+        encodeURIComponent(text),
+      );
+
+    router.push(shareUrl);
+  };
 
   return (
     <div className="w-full max-w-lg p-8 space-y-6 bg-white shadow-lg rounded-xl">
@@ -59,21 +74,20 @@ export default function Form(
           {servers.map((url) => <option key={url} value={url}></option>)}
         </datalist>
       </div>
-      <div>
-        <textarea
-          className="w-full min-h-32 text-neutral-600 outline-none"
-          placeholder="なにをしぇあする？"
-          defaultValue={defaultText}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </div>
+      <textarea
+        className="w-full min-h-32 text-neutral-600 outline-none"
+        placeholder="なにをしぇあする？"
+        defaultValue={defaultText}
+        onChange={(e) => setText(e.target.value)}
+      />
       <div className="flex justify-end">
-        <a
-          className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-5 py-2 cursor-pointer"
-          href={shareUrl}
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-5 py-2 cursor-pointer disabled:bg-neutral-100 transition-colors"
+          onClick={handleClickShare}
+          disabled={disabledShare}
         >
           しぇあ
-        </a>
+        </button>
       </div>
     </div>
   );
