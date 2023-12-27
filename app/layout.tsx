@@ -14,6 +14,12 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
     siteName: site.title,
+    images: [{ url: "/ogp.png" }],
+  },
+  twitter: {
+    ...site,
+    card: "summary_large_image",
+    images: [{ url: "/ogp.png" }],
   },
 };
 
