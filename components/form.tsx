@@ -104,12 +104,12 @@ export default function Form(
         defaultValue={defaultText}
         onChange={(e) => setText(e.target.value)}
       />
-      <div className="flex justify-end space-x-2">
+      <div className="flex justify-end space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
         <Button
           onClick={handleClickCopy}
           disabled={disabledShare}
         >
-          {isCopied ? "コピーしました！" : "リンクをコピー"}
+          {isCopied ? "コピーしました！" : "このページのリンクをコピー"}
         </Button>
         <Button
           onClick={handleClickShare}
