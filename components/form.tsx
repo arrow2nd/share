@@ -2,7 +2,7 @@
 
 import Button from "@/components/button";
 import ServiceButton from "@/components/service-button";
-import { fetchServers } from "@/libs/servers";
+import { addHistories, fetchServers } from "@/libs/servers";
 import { services } from "@/libs/services";
 import { Service } from "@/types/service";
 import { useRouter } from "next/navigation";
@@ -18,14 +18,14 @@ export default function Form(
   { defaultService, defaultServer, defaultText }: FormProps,
 ) {
   const [service, setService] = useState<Omit<Service, "icon">>(defaultService);
-  const [server, setServer] = useState<string>(defaultServer);
+  const [serverDomain, setServer] = useState<string>(defaultServer);
   const [text, setText] = useState<string>(defaultText);
   const [servers, setServers] = useState<string[]>([]);
   const [isCopied, toggleCopied] = useReducer((prev) => !prev, false);
 
   const router = useRouter();
 
-  const disabledShare = !text || (service.instanceVariation && !server);
+  const disabledShare = !text || (service.instanceVariation && !serverDomain);
 
   const handleClickCopy = async () => {
     if (disabledShare) {
@@ -36,8 +36,8 @@ export default function Form(
 
     url.searchParams.append("service", service.name);
 
-    if (server) {
-      url.searchParams.append("server", server);
+    if (serverDomain) {
+      url.searchParams.append("server", serverDomain);
     }
 
     url.searchParams.append("text", text);
@@ -53,11 +53,14 @@ export default function Form(
       return;
     }
 
-    const shareUrl = service.shareUrlTemplate.replace("{server}", server)
-      .replace(
-        "{text}",
-        encodeURIComponent(text),
-      );
+    // 履歴に追加
+    if (service.instanceVariation && serverDomain) {
+      addHistories(service.name, serverDomain);
+    }
+
+    const shareUrl = service.shareUrlTemplate
+      .replace("{server}", serverDomain)
+      .replace("{text}", encodeURIComponent(text));
 
     router.push(shareUrl);
   };
@@ -86,9 +89,8 @@ export default function Form(
       <div className={!service.instanceVariation ? "hidden" : undefined}>
         <input
           className="w-full text-neutral-600 rounded-md outline-none"
-          placeholder="インスタンス・サーバーを選択"
-          value={server}
-          autoComplete="on"
+          placeholder="インスタンス・サーバーのドメインを入力"
+          value={serverDomain}
           list="servers"
           onChange={(e) => setServer(e.target.value)}
         />
