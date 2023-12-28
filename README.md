@@ -1,6 +1,6 @@
 # しぇあ.com
 
-📬 X / Mastodon / Misskey など、各種 SNS へのシェアをサポートする Web アプリ
+📬 X (旧 Twitter) / Mastodon / Misskey / Threads など、各種 SNS へのシェアリンクを1つにまとまられる Web アプリ
 
 <img width="1280" src="https://github.com/arrow2nd/share/assets/44780846/86a8f249-1862-4020-a9f9-e738d09fe34f" />
 
