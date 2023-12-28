@@ -1,6 +1,5 @@
 export const site = {
   title: "しぇあ.com",
   description:
-    "X / Mastodon / Misskey など、各種 SNS へのシェアをサポートする Web アプリ",
+    "X (旧 Twitter) / Mastodon / Misskey / Threads など、各種 SNS へのシェアリンクを1つにまとまられる Web アプリ",
 };
-
