@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     ...site,
-    card: "summary_large_image",
+    card: "summary",
     images: [{ url: "/ogp.png" }],
   },
 };
