@@ -7,6 +7,7 @@ import { services } from "@/libs/services";
 import { Service } from "@/types/service";
 import { useRouter } from "next/navigation";
 import { useReducer, useState } from "react";
+import Card from "./card";
 
 export type FormProps = {
   defaultService: Service;
@@ -66,7 +67,7 @@ export default function Form(
   };
 
   return (
-    <div className="w-full max-w-lg p-8 space-y-6 bg-white shadow-lg rounded-xl">
+    <Card>
       <div className="flex space-x-2">
         {services.map((s) => (
           <ServiceButton
@@ -118,6 +119,6 @@ export default function Form(
           しぇあ
         </Button>
       </div>
-    </div>
+    </Card>
   );
 }
