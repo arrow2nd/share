@@ -1,12 +1,14 @@
 "use client";
 
+import { useReducer, useState } from "react";
+import { useRouter } from "next/navigation";
+import { RiInformationLine } from "react-icons/ri";
 import Button from "@/components/button";
 import ServiceButton from "@/components/service-button";
 import { addHistories, fetchServers } from "@/libs/servers";
 import { services } from "@/libs/services";
 import { Service } from "@/types/service";
-import { useRouter } from "next/navigation";
-import { useReducer, useState } from "react";
+import Card from "./card";
 
 export type FormProps = {
   defaultService: Service;
@@ -66,7 +68,14 @@ export default function Form(
   };
 
   return (
-    <div className="w-full max-w-lg p-8 space-y-6 bg-white shadow-lg rounded-xl">
+    <Card className="relative">
+      <a
+        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 hover:text-blue-500 transition-colors"
+        href="/help"
+      >
+        <RiInformationLine className="w-4 h-4 mr-1" />
+        これはなに？
+      </a>
       <div className="flex space-x-2">
         {services.map((s) => (
           <ServiceButton
@@ -86,10 +95,12 @@ export default function Form(
           </ServiceButton>
         ))}
       </div>
-      <div className={!service.instanceVariation ? "hidden" : undefined}>
+      <div
+        className={`mt-6 ${!service.instanceVariation ? "hidden" : undefined}`}
+      >
         <input
           className="w-full text-neutral-600 rounded-md outline-none"
-          placeholder="インスタンス・サーバーのドメインを入力"
+          placeholder="サーバーのドメインを入力"
           value={serverDomain}
           list="servers"
           onChange={(e) => setServer(e.target.value)}
@@ -99,17 +110,17 @@ export default function Form(
         </datalist>
       </div>
       <textarea
-        className="w-full min-h-32 text-neutral-600 outline-none"
+        className="w-full min-h-32 mt-6 text-neutral-600 outline-none"
         placeholder="なにをしぇあする？"
         defaultValue={defaultText}
         onChange={(e) => setText(e.target.value)}
       />
-      <div className="flex justify-end space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
+      <div className="flex justify-end mt-6 space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
         <Button
           onClick={handleClickCopy}
           disabled={disabledShare}
         >
-          {isCopied ? "コピーしました！" : "このページのリンクをコピー"}
+          {isCopied ? "コピーしました！" : "シェアリンクをコピー"}
         </Button>
         <Button
           onClick={handleClickShare}
@@ -118,6 +129,6 @@ export default function Form(
           しぇあ
         </Button>
       </div>
-    </div>
+    </Card>
   );
 }
