@@ -120,7 +120,7 @@ export default function Form(
           onClick={handleClickCopy}
           disabled={disabledShare}
         >
-          {isCopied ? "コピーしました！" : "このページのリンクをコピー"}
+          {isCopied ? "コピーしました！" : "シェアリンクをコピー"}
         </Button>
         <Button
           onClick={handleClickShare}
