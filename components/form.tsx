@@ -80,7 +80,7 @@ export default function Form(props: FormProps) {
                 setServers(res);
               }
 
-              updateURLParams({ ...props, service: s });
+              updateURLParams({ ...props, service: s, serverDomain: "" });
             }}
           >
             {s.icon}

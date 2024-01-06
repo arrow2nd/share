@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 import Card from "./card";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -26,6 +28,8 @@ const sections: Section[] = [
 ];
 
 export default function HelpDialog() {
+  const router = useRouter();
+
   const cardSections = sections.map(({ title, body }) => {
     return (
       <div key={title}>
@@ -38,12 +42,12 @@ export default function HelpDialog() {
   return (
     <div className="fixed top-0 left-0 z-10 w-screen h-screen p-6 flex justify-center items-center bg-black/75">
       <Card className="relative text-neutral-800 text-sm">
-        <Link
+        <button
           className="absolute top-0 right-0 text-lg p-4 hover:text-blue-500 transition-colors"
-          href="/"
+          onClick={() => router.back()}
         >
           <RiCloseLine />
-        </Link>
+        </button>
         <div className="space-y-4">
           {cardSections}
           <div>
