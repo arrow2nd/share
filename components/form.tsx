@@ -1,6 +1,7 @@
 "use client";
 
 import { useReducer, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiInformationLine } from "react-icons/ri";
 import Button from "@/components/button";
@@ -69,13 +70,13 @@ export default function Form(
 
   return (
     <Card className="relative">
-      <a
+      <Link
         className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 hover:text-blue-500 transition-colors"
         href="/help"
       >
         <RiInformationLine className="w-4 h-4 mr-1" />
         これはなに？
-      </a>
+      </Link>
       <div className="flex space-x-2">
         {services.map((s) => (
           <ServiceButton
