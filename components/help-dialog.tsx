@@ -36,7 +36,7 @@ export default function HelpDialog() {
   });
 
   return (
-    <div className="fixed top-0 left-0 z-10 w-screen h-screen flex justify-center items-center bg-black/75">
+    <div className="fixed top-0 left-0 z-10 w-screen h-screen p-6 flex justify-center items-center bg-black/75">
       <Card className="relative text-neutral-800 text-sm">
         <Link
           className="absolute top-0 right-0 text-lg p-4 hover:text-blue-500 transition-colors"
@@ -49,16 +49,16 @@ export default function HelpDialog() {
           <div>
             <p className="text-lg font-bold">開発者の方へ</p>
             <p className="mt-1">
-              URL を作成し、サイトにシェアリンクとして埋め込むことができます。
+              SNS 共有のリンクとしてサイト等でご利用いただくことができます。
             </p>
             <p className="mt-1">
-              基本的にはシェアしたいテキストを入力し「シェアリンクをコピー」をクリックすれば、URL
+              シェアしたいテキストを入力し「シェアリンクをコピー」をクリックして、URL
               を作成・コピーできます。
             </p>
             <p className="mt-1">
               詳しいシェアリンクの形式は
               <a
-                className="underline text-neutral-500 hover:text-blue-500 transition-colors"
+                className="mx-1 underline text-neutral-500 hover:text-blue-500 transition-colors"
                 href="https://github.com/arrow2nd/share/blob/main/README.md#%E4%BD%BF%E3%81%84%E6%96%B9"
               >
                 GitHub の README
