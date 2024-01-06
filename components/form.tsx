@@ -75,11 +75,6 @@ export default function Form(props: FormProps) {
             key={s.name}
             selected={s.name === props.service.name}
             onClick={async () => {
-              if (s.instanceVariation) {
-                const res = await fetchServers(s.name);
-                setServers(res);
-              }
-
               updateURLParams({ ...props, service: s, serverDomain: "" });
             }}
           >
@@ -97,6 +92,12 @@ export default function Form(props: FormProps) {
           placeholder="サーバーのドメインを入力"
           defaultValue={props.serverDomain}
           list="servers"
+          onFocus={async () => {
+            if (props.service.instanceVariation) {
+              const res = await fetchServers(props.service.name);
+              setServers(res);
+            }
+          }}
           onBlur={(e) =>
             updateURLParams({ ...props, serverDomain: e.target.value })}
         />
