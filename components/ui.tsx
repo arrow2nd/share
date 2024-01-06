@@ -23,9 +23,9 @@ export default function UI({ searchParams, openHelpDialog }: Props) {
         size={80}
       />
       <Form
-        defaultService={service}
-        defaultServer={searchParams.server ?? ""}
-        defaultText={searchParams.text ?? ""}
+        service={service}
+        serverDomain={searchParams.server ?? ""}
+        text={searchParams.text ?? ""}
       />
     </main>
   );
