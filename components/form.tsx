@@ -126,7 +126,8 @@ export default function Form(
           onClick={handleClickShare}
           disabled={disabledShare}
         >
-          しぇあ
+          {service.name.slice(0, 1).toUpperCase() +
+            service.name.slice(1)}でしぇあ
         </Button>
       </div>
     </Card>
