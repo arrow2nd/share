@@ -113,6 +113,7 @@ export default function Form(props: FormProps) {
       />
       <div className="flex justify-end mt-6 space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
         <Button
+          secondary
           onClick={handleClickCopy}
           disabled={disabledShare}
         >
