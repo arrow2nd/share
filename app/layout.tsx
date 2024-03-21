@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { site } from "@/libs/constants";
 import "./globals.css";
@@ -32,8 +31,13 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         {children}
-        <Analytics />
       </body>
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "d60db2d828c9416da91a42b1b49d41f1"}'
+      >
+      </script>
     </html>
   );
 }
