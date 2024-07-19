@@ -47,7 +47,7 @@ importers:
         version: 8.4.39
       tailwindcss:
         specifier: ^3.3.0
-        version: 3.4.5(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
+        version: 3.4.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
       typescript:
         specifier: ^5
         version: 5.5.3
@@ -1396,8 +1396,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  tailwindcss@3.4.5:
-    resolution: {integrity: sha512-DlTxttYcogpDfx3tf/8jfnma1nfAYi2cBUYV2YNoPPecwmO3YGiFlOX9D8tGAu+EDF38ryBzvrDKU/BLMsUwbw==}
+  tailwindcss@3.4.6:
+    resolution: {integrity: sha512-1uRHzPB+Vzu57ocybfZ4jh5Q3SdlH7XW23J5sQoM9LhE9eIOlzxer/3XPSsycvih3rboRsvt0QCmzSrqyOYUIA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -3023,7 +3023,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tailwindcss@3.4.5(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)):
+  tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
