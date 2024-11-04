@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 export type Service = {
   name: string;
   shareUrlTemplate: string;
