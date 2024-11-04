@@ -98,7 +98,7 @@ export default function Form(props: FormProps) {
               setServers(res);
             }
           }}
-          onChange={(e) =>
+          onBlur={(e) =>
             updateURLParams({ ...props, serverDomain: e.target.value })}
         />
         <datalist id="servers">
