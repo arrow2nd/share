@@ -6,7 +6,8 @@ import HelpDialog from "./help-dialog";
 
 type Props = {
   openHelpDialog: boolean;
-} & Params;
+  searchParams: Params
+}
 
 export default function UI({ searchParams, openHelpDialog }: Props) {
   const service =
