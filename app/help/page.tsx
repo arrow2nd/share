@@ -1,9 +1,14 @@
 import UI from "@/components/ui";
 import { Params } from "@/types/params";
 
-export default function Help(props: Params) {
+type Props = {
+  searchParams: Promise<Params>;
+}
+
+export default async function Help(props: Props) {
+  const searchParams = await props.searchParams;
+
   return (
-    <UI /* @next-codemod-error 'props' is used with spread syntax (...). Any asynchronous properties of 'props' must be awaited when accessed. */
-    {...props} openHelpDialog={true} />
+    <UI searchParams={searchParams} openHelpDialog={false} />
   );
 }
