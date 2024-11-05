@@ -20,7 +20,7 @@
     "@eslint/compat": "^1.2.2",
     "@types/node": "^22.0.0",
     "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0",
     "autoprefixer": "^10.0.1",
     "eslint": "^9.0.0",
     "eslint-config-next": "15.0.2",
@@ -31,7 +31,7 @@
   "pnpm": {
     "overrides": {
       "@types/react": "npm:types-react@19.0.0-rc.1",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+      "@types/react-dom": "npm:types-react-dom@19.0.0"
     }
   }
 }
