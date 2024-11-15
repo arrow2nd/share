@@ -2,9 +2,7 @@
 
 📬 X (旧 Twitter) / Mastodon / Misskey / Threads など、各種 SNS へのシェアリンクを1つにまとまられる Web アプリ
 
-
 https://github.com/user-attachments/assets/5f6dda78-5ca3-476c-b83b-13d15660f21d
-
 
 ## なにこれ
 

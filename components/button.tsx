@@ -10,9 +10,9 @@ export default function Button({ secondary = false, ...props }: Props) {
       {...props}
       className={`${
         secondary
-          ? "bg-white border border-blue-500 hover:border-blue-600 text-blue-500 hover:text-blue-600 disabled:border-neutral-200 disabled:text-neutral-200"
-          : "bg-blue-500 hover:bg-blue-600 text-white disabled:bg-neutral-200 "
-      } text-sm sm:text-base rounded-full px-5 py-2 cursor-pointer transition-colors`}
+          ? "border border-blue-500 bg-white text-blue-500 hover:border-blue-600 hover:text-blue-600 disabled:border-neutral-200 disabled:text-neutral-200"
+          : "bg-blue-500 text-white hover:bg-blue-600 disabled:bg-neutral-200"
+      } cursor-pointer rounded-full px-5 py-2 text-sm transition-colors sm:text-base`}
     >
       {props.children}
     </button>

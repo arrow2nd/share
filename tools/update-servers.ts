@@ -9,7 +9,7 @@ const fetchServers = async <T>(url: string, f: (json: T) => string[]) => {
   }
 
   console.log("[LOG] parse");
-  const json = await res.json() as T;
+  const json = (await res.json()) as T;
 
   return f(json);
 };
@@ -28,7 +28,7 @@ type MisskeyServers = {
   // Mastodon
   const mastodon = await fetchServers<MastodonServers>(
     "https://api.joinmastodon.org/servers?language=&category=&region=&ownership=&registrations=",
-    (json) => json.map(({ domain }) => domain),
+    (json) => json.map(({ domain }) => domain)
   );
 
   if (mastodon) {
@@ -40,7 +40,7 @@ type MisskeyServers = {
   // Misskey
   const misskey = await fetchServers<MisskeyServers>(
     "https://instanceapp.misskey.page/instances.json",
-    (json) => json.instancesInfos.map(({ url }) => url),
+    (json) => json.instancesInfos.map(({ url }) => url)
   );
 
   if (misskey) {
