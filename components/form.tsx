@@ -28,7 +28,9 @@ export default function Form(props: FormProps) {
 
   useDebounce(
     () => {
-      updateURLParams({ ...props, text });
+      if (text !== "") {
+        updateURLParams({ ...props, text });
+      }
     },
     250,
     [text]
