@@ -13,7 +13,7 @@ const sections: Section[] = [
   {
     title: "これなに？",
     body: [
-      "X (旧 Twitter) / Mastodon / Misskey など、様々な SNS へのシェアリンクをひとつのサイトにまとめることができる Web アプリです。",
+      "X (旧 Twitter) / Bluesky / Mastodon / Misskey など、様々な SNS へのシェアリンクをひとつのサイトにまとめることができる Web アプリです。",
       "営利・非営利問わず、どなたでもご自由にご利用いただけます。広告もありません！"
     ]
   },
