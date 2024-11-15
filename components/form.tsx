@@ -20,9 +20,17 @@ export type FormProps = {
 
 export default function Form(props: FormProps) {
   const [servers, setServers] = useState<string[]>([]);
+  const [text, setText] = useState("");
   const [isCopied, toggleCopied] = useReducer((prev) => !prev, false);
 
   const router = useRouter();
+  useDebounce(
+    () => {
+      updateURLParams({ ...props, text });
+    },
+    250,
+    [text]
+  );
   const disabledShare = !props.text ||
     (props.service.instanceVariation && !props.serverDomain);
 
@@ -109,7 +117,9 @@ export default function Form(props: FormProps) {
         className="w-full min-h-32 mt-6 text-neutral-600 outline-none"
         placeholder="なにをしぇあする？"
         defaultValue={props.text}
-        onBlur={(e) => updateURLParams({ ...props, text: e.target.value })}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
       />
       <div className="flex justify-end mt-6 space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
         <Button
