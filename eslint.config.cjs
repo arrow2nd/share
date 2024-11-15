@@ -7,6 +7,5 @@ module.exports = [
   ...fixupConfigRules(
     flatCompat.extends("next/core-web-vitals"),
     flatCompat.extends("next/typescript")
-  ),
+  )
 ];
-

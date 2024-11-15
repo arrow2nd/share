@@ -13,17 +13,17 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
     siteName: site.title,
-    images: [{ url: "/ogp.png" }],
+    images: [{ url: "/ogp.png" }]
   },
   twitter: {
     ...site,
     card: "summary",
-    images: [{ url: "/ogp.png" }],
-  },
+    images: [{ url: "/ogp.png" }]
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -34,12 +34,9 @@ export default function RootLayout({
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "d60db2d828c9416da91a42b1b49d41f1"}'
-        >
-        </script>
+        ></script>
       </head>
-      <body className={inter.className}>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

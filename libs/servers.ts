@@ -1,11 +1,11 @@
 import { Service } from "@/types/service";
 
 export const fetchServers = async (
-  serviceName: Service["name"],
+  serviceName: Service["name"]
 ): Promise<string[]> => {
   // 履歴を読み込む
   const histories: string[] = JSON.parse(
-    localStorage.getItem(serviceName) || "[]",
+    localStorage.getItem(serviceName) || "[]"
   );
 
   // リストを取得
@@ -14,7 +14,7 @@ export const fetchServers = async (
     return [];
   }
 
-  const servers = await res.json() as string[];
+  const servers = (await res.json()) as string[];
 
   // 重複を除きつつマージ
   return [...new Set(histories.concat(servers))];
@@ -22,10 +22,10 @@ export const fetchServers = async (
 
 export const addHistories = (
   serviceName: Service["name"],
-  serverDomain: string,
+  serverDomain: string
 ) => {
   const histories: string[] = JSON.parse(
-    localStorage.getItem(serviceName) || "[]",
+    localStorage.getItem(serviceName) || "[]"
   );
 
   const newHistories = [...new Set([serverDomain].concat(histories))];

@@ -8,10 +8,10 @@ export default function ServiceButton({ selected = false, ...props }: Props) {
   return (
     <button
       {...props}
-      className={`px-4 py-1 rounded-full transition-colors ${
+      className={`rounded-full px-4 py-1 transition-colors ${
         selected
-          ? "text-white bg-blue-500"
-          : "text-neutral-600 hover:text-white bg-neutral-100 hover:bg-blue-500"
+          ? "bg-blue-500 text-white"
+          : "bg-neutral-100 text-neutral-600 hover:bg-blue-500 hover:text-white"
       }`}
     >
       {props?.children}
