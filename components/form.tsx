@@ -11,6 +11,7 @@ import { services } from "@/libs/services";
 import { Service } from "@/types/service";
 import { createShareURL } from "@/libs/url";
 import Card from "./card";
+import { useDebounce } from "react-use";
 
 export type FormProps = {
   service: Service;
@@ -24,6 +25,7 @@ export default function Form(props: FormProps) {
   const [isCopied, toggleCopied] = useReducer((prev) => !prev, false);
 
   const router = useRouter();
+
   useDebounce(
     () => {
       updateURLParams({ ...props, text });
@@ -31,8 +33,9 @@ export default function Form(props: FormProps) {
     250,
     [text]
   );
-  const disabledShare = !props.text ||
-    (props.service.instanceVariation && !props.serverDomain);
+
+  const disabledShare =
+    !props.text || (props.service.instanceVariation && !props.serverDomain);
 
   const updateURLParams = (p: FormProps) => {
     const url = createShareURL(p);
@@ -71,10 +74,10 @@ export default function Form(props: FormProps) {
   return (
     <Card className="relative">
       <Link
-        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 hover:text-blue-500 transition-colors"
+        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 transition-colors hover:text-blue-500"
         href="/help"
       >
-        <RiInformationLine className="w-4 h-4 mr-1" />
+        <RiInformationLine className="mr-1 h-4 w-4" />
         これはなに？
       </Link>
       <div className="flex space-x-2">
@@ -96,7 +99,7 @@ export default function Form(props: FormProps) {
         }`}
       >
         <input
-          className="w-full text-neutral-600 rounded-md outline-none"
+          className="w-full rounded-md text-neutral-600 outline-none"
           placeholder="サーバーのドメインを入力"
           defaultValue={props.serverDomain}
           list="servers"
@@ -107,34 +110,31 @@ export default function Form(props: FormProps) {
             }
           }}
           onBlur={(e) =>
-            updateURLParams({ ...props, serverDomain: e.target.value })}
+            updateURLParams({ ...props, serverDomain: e.target.value })
+          }
         />
         <datalist id="servers">
-          {servers.map((url) => <option key={url} value={url}></option>)}
+          {servers.map((url) => (
+            <option key={url} value={url}></option>
+          ))}
         </datalist>
       </div>
       <textarea
-        className="w-full min-h-32 mt-6 text-neutral-600 outline-none"
+        className="mt-6 min-h-32 w-full text-neutral-600 outline-none"
         placeholder="なにをしぇあする？"
         defaultValue={props.text}
         onChange={(e) => {
           setText(e.target.value);
         }}
       />
-      <div className="flex justify-end mt-6 space-y-2 sm:space-y-0 sm:space-x-2 flex-col sm:flex-row">
-        <Button
-          secondary
-          onClick={handleClickCopy}
-          disabled={disabledShare}
-        >
+      <div className="mt-6 flex flex-col justify-end space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+        <Button secondary onClick={handleClickCopy} disabled={disabledShare}>
           {isCopied ? "コピーしました！" : "シェアリンクをコピー"}
         </Button>
-        <Button
-          onClick={handleClickShare}
-          disabled={disabledShare}
-        >
+        <Button onClick={handleClickShare} disabled={disabledShare}>
           {props.service.name.slice(0, 1).toUpperCase() +
-            props.service.name.slice(1)}でしぇあ
+            props.service.name.slice(1)}
+          でしぇあ
         </Button>
       </div>
     </Card>
