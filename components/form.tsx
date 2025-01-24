@@ -76,7 +76,7 @@ export default function Form(props: FormProps) {
   return (
     <Card className="relative">
       <Link
-        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 transition-colors hover:text-blue-500"
+        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 transition-colors hover:text-blue-500 dark:text-gray-400"
         href="/help"
       >
         <RiInformationLine className="mr-1 h-4 w-4" />
@@ -101,7 +101,7 @@ export default function Form(props: FormProps) {
         }`}
       >
         <input
-          className="w-full rounded-md text-neutral-600 outline-none"
+          className="w-full rounded-md text-neutral-600 outline-hidden dark:text-gray-400"
           placeholder="サーバーのドメインを入力"
           defaultValue={props.serverDomain}
           list="servers"
@@ -122,14 +122,14 @@ export default function Form(props: FormProps) {
         </datalist>
       </div>
       <textarea
-        className="mt-6 min-h-32 w-full text-neutral-600 outline-none"
+        className="mt-6 min-h-32 w-full text-neutral-600 outline-hidden dark:text-gray-400"
         placeholder="なにをしぇあする？"
         defaultValue={props.text}
         onChange={(e) => {
           setText(e.target.value);
         }}
       />
-      <div className="mt-6 flex flex-col justify-end space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+      <div className="mt-6 flex flex-col justify-end space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
         <Button secondary onClick={handleClickCopy} disabled={disabledShare}>
           {isCopied ? "コピーしました！" : "シェアリンクをコピー"}
         </Button>

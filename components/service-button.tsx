@@ -11,7 +11,7 @@ export default function ServiceButton({ selected = false, ...props }: Props) {
       className={`rounded-full px-4 py-1 transition-colors ${
         selected
           ? "bg-blue-500 text-white"
-          : "bg-neutral-100 text-neutral-600 hover:bg-blue-500 hover:text-white"
+          : "bg-neutral-100 text-neutral-600 hover:bg-blue-500 hover:text-white dark:bg-gray-700 dark:text-gray-400"
       }`}
     >
       {props?.children}
