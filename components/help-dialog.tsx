@@ -46,10 +46,10 @@ export default function HelpDialog() {
   });
 
   return (
-    <div className="fixed left-0 top-0 z-10 flex h-screen w-screen items-center justify-center bg-black/75 p-6">
-      <Card className="relative text-sm text-neutral-800">
+    <div className="fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black/75 p-6">
+      <Card className="relative text-sm text-neutral-800 dark:text-gray-400">
         <button
-          className="absolute right-0 top-0 p-4 text-lg transition-colors hover:text-blue-500"
+          className="absolute top-0 right-0 p-4 text-lg transition-colors hover:text-blue-500"
           onClick={() => router.back()}
         >
           <RiCloseLine />
@@ -68,7 +68,7 @@ export default function HelpDialog() {
             <p className="mt-1">
               詳しいシェアリンクの形式は
               <a
-                className="mx-1 text-neutral-500 underline transition-colors hover:text-blue-500"
+                className="mx-1 text-neutral-500 underline transition-colors hover:text-blue-500 dark:text-gray-200"
                 href="https://github.com/arrow2nd/share/blob/main/README.md#%E4%BD%BF%E3%81%84%E6%96%B9"
               >
                 GitHub の README
