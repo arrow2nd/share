@@ -46,8 +46,14 @@ export default function HelpDialog() {
   });
 
   return (
-    <div className="fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black/75 p-6">
-      <Card className="relative max-w-2xl text-sm">
+    <div
+      className="fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black/75 p-6"
+      onClick={() => router.back()}
+    >
+      <Card
+        className="relative max-w-2xl text-sm"
+        onClick={(event) => event.stopPropagation()}
+      >
         <button
           className="absolute top-0 right-0 p-4 text-lg transition-colors hover:text-slate-600"
           onClick={() => router.back()}
