@@ -3,7 +3,8 @@
 import { useReducer, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { RiInformationLine } from "react-icons/ri";
+import { RiQuestionFill } from "react-icons/ri";
+import { twMerge } from "tailwind-merge";
 import Button from "@/components/button";
 import ServiceButton from "@/components/service-button";
 import { addHistories, fetchServers } from "@/libs/servers";
@@ -28,9 +29,7 @@ export default function Form(props: FormProps) {
 
   useDebounce(
     () => {
-      if (text !== "") {
-        updateURLParams({ ...props, text });
-      }
+      updateURLParams({ ...props, text });
     },
     250,
     [text]
@@ -53,7 +52,7 @@ export default function Form(props: FormProps) {
     await navigator.clipboard.writeText(url.href);
 
     toggleCopied();
-    setTimeout(() => toggleCopied(), 1500);
+    setTimeout(() => toggleCopied(), 2000);
   };
 
   const handleClickShare = () => {
@@ -76,13 +75,13 @@ export default function Form(props: FormProps) {
   return (
     <Card className="relative">
       <Link
-        className="absolute -top-6 right-1 flex items-center text-sm text-neutral-500 transition-colors hover:text-blue-500 dark:text-gray-400"
+        className="absolute -top-8 right-1 flex items-center text-sm text-slate-600 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-500"
         href="/help"
       >
-        <RiInformationLine className="mr-1 h-4 w-4" />
+        <RiQuestionFill className="mr-1 h-4 w-4" />
         これはなに？
       </Link>
-      <div className="flex space-x-2">
+      <div className="mt-1 flex space-x-2">
         {services.map((s) => (
           <ServiceButton
             key={s.name}
@@ -96,12 +95,13 @@ export default function Form(props: FormProps) {
         ))}
       </div>
       <div
-        className={`mt-6 ${
-          !props.service.instanceVariation ? "hidden" : undefined
-        }`}
+        className={twMerge(
+          "mt-6",
+          !props.service.instanceVariation && "hidden"
+        )}
       >
         <input
-          className="w-full rounded-md text-neutral-600 outline-hidden dark:text-gray-400"
+          className="w-full rounded-md text-slate-600 outline-hidden dark:text-slate-200"
           placeholder="サーバーのドメインを入力"
           defaultValue={props.serverDomain}
           list="servers"
@@ -122,7 +122,7 @@ export default function Form(props: FormProps) {
         </datalist>
       </div>
       <textarea
-        className="mt-6 min-h-32 w-full text-neutral-600 outline-hidden dark:text-gray-400"
+        className="mt-6 min-h-32 w-full text-slate-600 outline-hidden dark:text-slate-200"
         placeholder="なにをしぇあする？"
         defaultValue={props.text}
         onChange={(e) => {
@@ -130,9 +130,11 @@ export default function Form(props: FormProps) {
         }}
       />
       <div className="mt-6 flex flex-col justify-end space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
-        <Button secondary onClick={handleClickCopy} disabled={disabledShare}>
-          {isCopied ? "コピーしました！" : "シェアリンクをコピー"}
-        </Button>
+        {!disabledShare && (
+          <Button secondary onClick={handleClickCopy}>
+            {isCopied ? "コピーしました！" : "このページのリンクをコピー"}
+          </Button>
+        )}
         <Button onClick={handleClickShare} disabled={disabledShare}>
           {props.service.name.slice(0, 1).toUpperCase() +
             props.service.name.slice(1)}

@@ -15,11 +15,11 @@ export default function UI({ searchParams, openHelpDialog }: Props) {
     services[0];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 dark:bg-gray-950">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 dark:bg-slate-950">
       {openHelpDialog && <HelpDialog />}
       <GitHubCorner
         href="https://github.com/arrow2nd/share"
-        bannerColor="#3282F6"
+        bannerColor="#45556c"
         octoColor="#ffffff"
         size={80}
       />

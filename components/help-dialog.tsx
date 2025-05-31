@@ -33,11 +33,11 @@ export default function HelpDialog() {
   const cardSections = sections.map(({ title, body }) => {
     return (
       <div key={title}>
-        <p className="text-lg font-bold" key={title}>
+        <h2 className="text-xl font-bold" key={title}>
           {title}
-        </p>
+        </h2>
         {body.map((text) => (
-          <p className="mt-1" key={text}>
+          <p className="mt-2 text-slate-700 dark:text-slate-300" key={text}>
             {text}
           </p>
         ))}
@@ -47,28 +47,28 @@ export default function HelpDialog() {
 
   return (
     <div className="fixed top-0 left-0 z-10 flex h-screen w-screen items-center justify-center bg-black/75 p-6">
-      <Card className="relative text-sm text-neutral-800 dark:text-gray-400">
+      <Card className="relative max-w-2xl text-sm">
         <button
-          className="absolute top-0 right-0 p-4 text-lg transition-colors hover:text-blue-500"
+          className="absolute top-0 right-0 p-4 text-lg transition-colors hover:text-slate-600"
           onClick={() => router.back()}
         >
           <RiCloseLine />
         </button>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {cardSections}
           <div>
-            <p className="text-lg font-bold">開発者の方へ</p>
-            <p className="mt-1">
+            <h2 className="text-xl font-bold">開発者の方へ</h2>
+            <p className="mt-2 text-slate-700 dark:text-slate-300">
               SNS 共有のリンクとしてサイト等でご利用いただくことができます。
             </p>
-            <p className="mt-1">
-              シェアしたいテキストを入力し「シェアリンクをコピー」をクリックして、URL
+            <p className="mt-1 text-slate-700 dark:text-slate-300">
+              シェアしたいテキストを入力し「このページのリンクをコピー」をクリックして、URL
               を作成・コピーできます。
             </p>
-            <p className="mt-1">
+            <p className="mt-1 text-slate-700 dark:text-slate-300">
               詳しいシェアリンクの形式は
               <a
-                className="mx-1 text-neutral-500 underline transition-colors hover:text-blue-500 dark:text-gray-200"
+                className="mx-1 text-slate-600 underline transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-500"
                 href="https://github.com/arrow2nd/share/blob/main/README.md#%E4%BD%BF%E3%81%84%E6%96%B9"
               >
                 GitHub の README

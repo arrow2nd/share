@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   selected?: boolean;
@@ -8,11 +9,13 @@ export default function ServiceButton({ selected = false, ...props }: Props) {
   return (
     <button
       {...props}
-      className={`rounded-full px-4 py-1 transition-colors ${
+      className={twMerge(
+        "rounded-full px-4 py-1 transition-colors",
         selected
-          ? "bg-blue-500 text-white"
-          : "bg-neutral-100 text-neutral-600 hover:bg-blue-500 hover:text-white dark:bg-gray-700 dark:text-gray-400"
-      }`}
+          ? "bg-slate-600 text-white dark:bg-cyan-800"
+          : "bg-neutral-100 text-neutral-600 hover:bg-slate-600 hover:text-white dark:bg-slate-700 dark:text-neutral-400 dark:hover:bg-cyan-700",
+        props.className
+      )}
     >
       {props?.children}
     </button>

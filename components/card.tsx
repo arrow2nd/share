@@ -1,4 +1,5 @@
 import { HtmlHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 export default function Card({
   children,
@@ -7,7 +8,10 @@ export default function Card({
   return (
     <div
       {...props}
-      className={`w-full max-w-lg rounded-xl bg-white p-8 shadow-lg dark:bg-gray-800 ${props.className}`}
+      className={twMerge(
+        "w-full max-w-lg rounded-xl bg-white p-8 shadow-lg dark:bg-gray-800",
+        props.className
+      )}
     >
       {children}
     </div>
