@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RiQuestionFill } from "react-icons/ri";
@@ -22,7 +22,7 @@ export type FormProps = {
 
 export default function Form(props: FormProps) {
   const [servers, setServers] = useState<string[]>([]);
-  const [text, setText] = useState("");
+  const [text, setText] = useState(props.text || "");
   const [isCopied, toggleCopied] = useReducer((prev) => !prev, false);
 
   const router = useRouter();
