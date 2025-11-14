@@ -19,7 +19,7 @@
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.2",
+    "@eslint/compat": "^2.0.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^24.0.0",
     "@types/react": "npm:types-react@19.0.0-rc.1",
