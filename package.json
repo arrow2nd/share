@@ -10,7 +10,7 @@
     "update:servers": "ts-node ./tools/update-servers.ts"
   },
   "dependencies": {
-    "next": "16.1.4",
+    "next": "16.1.5",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.0.0",
@@ -25,7 +25,7 @@
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "16.1.4",
+    "eslint-config-next": "16.1.5",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.7.0",
